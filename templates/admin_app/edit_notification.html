@@ -1,0 +1,423 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://127.0.0.1:8000/admin/account_app/referral/ -->
+<html lang="en-us" dir="ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> change {{mod_sm}} | Altegris admin</title>
+    <link rel="stylesheet" type="text/css" href="/assets/sadmin/css/base.css">
+
+    <link rel="stylesheet" type="text/css" href="/assets/sadmin/css/nav_sidebar.css">
+    <script src="/assets/sadmin/js/nav_sidebar.js" defer=""></script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="/assets/sadmin/css/changelists.css">
+
+
+    <!----script src="./Select referral to change _ Django site admin_files/saved_resource"></script>-->
+
+    <style>
+        input#id_password {
+            pointer-events: none;
+        }
+        
+        div#div_id_user_permissions,
+        div#div_id_groups {
+            display: none;
+        }
+        
+        a.deletelink {
+            display: block;
+            background: var(--delete-button-bg);
+            border-radius: 4px;
+            padding: 10px 15px;
+            height: 15px;
+            line-height: 15px;
+            color: #fff !important;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        select.form-control[size],
+        select.form-control[multiple] {
+            height: auto;
+        }
+        
+        .form-control {
+            display: block;
+            width: 100%;
+            height: calc(1.5em + 0.75rem + 2px);
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #4F5467;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #e9ecef;
+            border-radius: 2px;
+            -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .form-control {
+                -webkit-transition: none;
+                -o-transition: none;
+                transition: none;
+            }
+        }
+        
+        .form-control::-ms-expand {
+            background-color: transparent;
+            border: 0;
+        }
+        
+        .form-control:-moz-focusring {
+            color: transparent;
+            text-shadow: 0 0 0 #4F5467;
+        }
+        
+        .form-control:focus {
+            color: #4F5467;
+            background-color: #fff;
+            border-color: rgba(0, 0, 0, 0.25);
+            outline: 0;
+            -webkit-box-shadow: transparent;
+            box-shadow: transparent;
+        }
+        
+        .form-control::-webkit-input-placeholder {
+            color: #6c757d;
+            opacity: 1;
+        }
+        
+        .form-control:-ms-input-placeholder {
+            color: #6c757d;
+            opacity: 1;
+        }
+        
+        .form-control::-ms-input-placeholder {
+            color: #6c757d;
+            opacity: 1;
+        }
+        
+        .form-control::placeholder {
+            color: #6c757d;
+            opacity: 1;
+        }
+        
+        .form-control:disabled,
+        .form-control[readonly] {
+            background-color: #e9ecef;
+            opacity: 1;
+        }
+        
+        input[type="date"].form-control,
+        input[type="time"].form-control,
+        input[type="datetime-local"].form-control,
+        input[type="month"].form-control {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        select.form-control:focus::-ms-value {
+            color: #4F5467;
+            background-color: #fff;
+        }
+        
+        .form-control-file,
+        .form-control-range {
+            display: block;
+            width: 100%;
+        }
+    </style>
+
+
+
+
+
+    <script src="/assets/sadmin/js/vendor/jquery/jquery.js"></script>
+    <script src="/assets/sadmin/js/jquery.init.js"></script>
+    <script src="/assets/sadmin/js/core.js"></script>
+    <script src="/assets/sadmin/js/admin/RelatedObjectLookups.js"></script>
+    <script src="/assets/sadmin/js/actions.js"></script>
+    <script src="/assets/sadmin/js/urlify.js"></script>
+    <script src="/assets/sadmin/js/prepopulate.js"></script>
+    <script src="/assets/sadmin/js/vendor/xregexp/xregexp.js"></script>
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/assets/sadmin/css/responsive.css">
+
+
+    <meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+
+<body class=" app-account_app model-referral change-list" data-admin-utc-offset="0">
+
+    <!-- Container -->
+    <div id="container">
+
+
+        <!-- Header -->
+        <div id="header">
+            <div id="branding">
+
+                <h1 id="site-name"><a href="/sadmin/">Admin Dashboard</a></h1>
+
+            </div>
+
+
+            <div id="user-tools">
+
+                Welcome,
+                <strong>altegris.com</strong>.
+
+
+
+                <a href="http://127.0.0.1:8000/">View site</a> /
+
+
+
+
+
+
+                <a href="http://127.0.0.1:8000/admin/password_change/">Change password</a> /
+
+                <a href="http://127.0.0.1:8000/admin/logout/">Log out</a>
+
+            </div>
+
+
+
+        </div>
+        <!-- END Header -->
+
+        <div class="breadcrumbs">
+            <a href="/sadmin/">Home</a> ›› {{app_name}} <a href="/sadmin/{{app_name_sm}}/{{mod_sm}}/">{{mod_sm}}</a> >> {{obj.strname}}
+        </div>
+
+
+
+        <div class="main shifted" id="main">
+
+
+
+            <button class="sticky toggle-nav-sidebar" id="toggle-nav-sidebar" aria-label="Toggle navigation"></button>
+            <nav class="sticky" id="nav-sidebar">
+
+
+
+
+                <div class="app-account_app module current-app">
+                    <table>
+                        <caption>
+                            <a href="#" class="section" title="Models in the Account_App application">Account</a>
+                        </caption>
+
+                        <tbody>
+                            <tr class="model-referral">
+
+                                <th scope="row"><a href="/sadmin/account_app/referral/">Referrals</a></th>
+
+
+
+                                <td><a href="/sadmin/account_app/referral/add/" class="addlink">Add</a></td>
+
+
+
+
+                                <td><a href="/sadmin/account_app/referral/" class="changelink">Change</a></td>
+
+
+                            </tr>
+
+                            <tr class="model-account">
+
+                                <th scope="row"><a href="/sadmin/account_app/account/">Users</a></th>
+
+
+
+                                <td><a href="/sadmin/account_app/account/add/" class="addlink">Add</a></td>
+
+
+
+
+                                <td><a href="/sadmin/account_app/account/" class="changelink">Change</a></td>
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="app-users_app module">
+                    <table>
+                        <caption>
+                            <a href="#" class="section" title="Models in the Users_App application">Users </a>
+                        </caption>
+
+                        <tbody>
+                            <tr class="model-investments">
+
+                                <th scope="row"><a href="/sadmin/users_app/investments/">Investments</a></th>
+
+
+
+                                <td><a href="/sadmin/users_app/investments/add/" class="addlink">Add</a></td>
+
+
+
+
+                                <td><a href="/sadmin/users_app/investments/" class="changelink">Change</a></td>
+
+
+                            </tr>
+
+                            <tr class="model-notification">
+
+                                <th scope="row"><a href="/sadmin/users_app/notification/">Notifications</a></th>
+
+
+
+                                <td><a href="/sadmin/users_app/notification/add/" class="addlink">Add</a></td>
+
+
+
+
+                                <td><a href="/sadmin/users_app/notification/" class="changelink">Change</a></td>
+
+
+                            </tr>
+
+                            <tr class="model-packages">
+
+                                <th scope="row"><a href="/sadmin/users_app/packages/">Packages</a></th>
+
+
+
+                                <td><a href="/sadmin/users_app/packages/add/" class="addlink">Add</a></td>
+
+
+
+
+                                <td><a href="/sadmin/users_app/packages/" class="changelink">Change</a></td>
+
+
+                            </tr>
+
+                            <tr class="model-transactions">
+
+                                <th scope="row"><a href="/sadmin/users_app/transactions/">Transactions</a></th>
+
+
+
+                                <td><a href="/sadmin/users_app/transactions/add/" class="addlink">Add</a></td>
+
+
+
+
+                                <td><a href="/sadmin/users_app/transactions/" class="changelink">Change</a></td>
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </nav>
+
+
+
+            <div class="content">
+
+
+
+                <!-- Content -->
+                <div id="content" class="">
+                    {% if messages %} {% for msg in messages %}
+                    <ul class="messagelist">
+                        <li class="success">{{msg}}</li>
+                    </ul>
+                    {% endfor %} {% endif %}
+
+                    <h1>Change {{mod}} </h1>
+
+
+                    <div id="content-main">
+
+                        <ul class="object-tools">
+
+
+
+
+
+                            <!--<li>
+
+                                <a href=" /sadmin/{{app_name_sm}}/{{mod}}/add/" class="addlink">
+      Add {{mod}}
+    </a>
+                            </li>-->
+                            <h2>{{obj.strname}}</h2>
+
+
+
+
+                        </ul>
+
+
+                        <div class="module" id="changelist">
+                            <div class="changelist-form-container">
+
+
+                                <form action="" method="post" class="mt-5" novalidate>
+                                    {% csrf_token %} {{form|crispy}}
+
+                                    <div class=" " style="display: flex; justify-content: space-between;">
+
+                                        <input type="submit" value="Save" class="default" name="_save">
+
+
+                                        <p class="deletelink-box"><a href="/sadmin/{{app_name_sm}}/{{mod_sm}}/{{obj.id}}/delete/" class="deletelink">Delete</a></p>
+
+
+
+
+
+                                    </div>
+                                </form>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+
+                    <br class="clear">
+                </div>
+                <!-- END Content -->
+                <div id="footer"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END Container -->
+
+
+</body>
+
+</html>

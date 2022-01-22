@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {% endblock title %} | ALTEGRIS
+    </title>
+    <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/assets/vendor/datatables/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/assets/vendor/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.theme.default.css">
+    <link rel="stylesheet" href="/assets/css/animate.css">
+    <link rel="stylesheet" href="/assets/css/toastr.min.css">
+    <link rel="stylesheet" href="/assets/css/application.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css"> {% block styles %} {% endblock styles %}
+</head>
+
+<body style="background-color: #fafdfb;">
+    {% if messages %} {% for msg in messages %}
+    <div style="display: none;" class="messages" data-msg="{{ msg }}"></div>
+    {% endfor %} {% endif %}
+    <main class="wrapper">
+        <header id="dashboardheader">
+            <div class="inner-content">
+                <nav>
+                    <div class="nav-brand">
+                        <img src="/assets/images/HEDGEMINE-removebg-preview.png" alt="Logo">
+                    </div>
+                    <ul class="menu">
+                        <li class="menu-item"><a href="{% url 'notification' %}" class="menu-link"><i class="fas fa-bell fa-fw"></i></a></a>
+                        </li>
+                        <li class="menu-item hide rb"><a href="#" class="menu-link"><i class="fas fa-refresh"></i></a></a>
+                        </li>
+                        <li class="menu-item hide rb"><a href="#" class="menu-link"><i class="fas fa-question-circle"></i></a></a>
+                        </li>
+                        <li class="menu-item hide rb "><a href="{% url 'account' %}" class="menu-link"><i class="fas fa-user-circle"></i> account</a></a>
+                        </li>
+                        <li class="menu-item  mobile"><a href="{% url 'account' %}" class="menu-link"><i class="fas fa-user-circle"></i> </a></a>
+                        </li>
+                        <li class="menu-item hide"><a href="{% url 'settings' %}" class="menu-link"><i class="fas fa-cog"></i> settings</a></li>
+                    </ul>
+                    <div class="hamburger" type="button">
+                        <span class="bars"></span>
+                        <span class="bars"></span>
+                        <span class="bars"></span>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="inner-wrapper d-flex flex-column">
+            <!--[sidebar]-->
+            <nav class="sidebar">
+                <ul class="sidebar-menu">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'dashboard' %}">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <span>Dashboard</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'wallet' %}">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <span>Wallet</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'history' %}">
+                            <i class="fas fa-fw fa-fw fa-history"></i>
+                            <span>History</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'withdraw' %}">
+                            <i class="las la-money-bill-wave-alt"></i>
+                            <span>Withdraw</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'deposit' %}">
+                            <i class="far fa-fw fa-credit-card"></i>
+                            <span>Deposit</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'notification' %}">
+                            <i class="fas fa-fw a-fw fa-history"></i>
+                            <span>Notifications</span></a>
+                    </li>
+
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'settings' %}">
+                            <i class="fas fa-fw   fa-fw fa-cog"></i>
+                            <span>settings</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'sign_out' %}">
+                            <i class="fas fa-fw fa-sign-out-alt"></i>
+                            <span>Logout</span></a>
+                    </li>
+                </ul>
+            </nav>
+            <!--[sidebar]-->
+            <!--[content]-->
+            <div class="dash-content " style="overflow-x: hidden;     width: 100%;">
+                {% block content %} {% endblock content %}
+
+
+
+
+
+
+
+                <footer class="dashboard-footer">
+                    <div class="container">
+                        <div class="justify-content-center">
+                            <h4>Copyright © 2021 Altegris All Rights Reserved</h4>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!--[content]-->
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/assets/vendor/select2/dist/js/select2.min.js"></script>
+    <script src="/assets/js/wow.js"></script>
+    <script src="/assets/js/owl.carousel.js"></script>
+    <script src="/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/assets/js/clipboard.min.js"></script>
+    <script src="/assets/js/toastr.min.js"></script>
+    {% if messages %}
+    <script src="/assets/js/toastr-init.js"></script>
+    {% endif %}
+    <script src="/assets/js/circle-progress.min.js"></script>
+    <script src="/assets/js/circle-progress-init.js"></script>
+    <script src="/assets/js/application.js"></script>
+    {% block scripts %} {% endblock scripts %}
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %} {% endblock title %} - Altegris</title>
+    <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/assets/vendor/datatables/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/assets/vendor/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.theme.default.css">
+    <link rel="stylesheet" href="/assets/css/animate.css">
+    <link rel="stylesheet" href="/assets/css/toastr.min.css">
+    <link rel="stylesheet" href="/assets/css/application.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css"> {% block styles %} {% endblock styles %}
+</head>
+
+<body class="authpage">
+    <div class="loading-card ">
+        <div class="wait-card">
+            <h5><i class="fa fa-spinner fa-spin"></i> <span>Please Wait..</span></h5>
+        </div>
+    </div>
+    {% if messages %} {% for msg in messages %}
+    <div style="display: none;" class="messages" data-msg="{{ msg }}"></div>
+    {% endfor %} {% endif %} {% block content %} {% endblock content %}
+
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/assets/vendor/select2/dist/js/select2.min.js"></script>
+    <script src="/assets/js/wow.js"></script>
+    <script src="/assets/js/owl.carousel.js"></script>
+    <script src="/assets/js/toastr.min.js"></script>
+    {% if messages %}
+    <script src="/assets/js/toastr-init.js"></script>
+    {% endif %}
+    <script src="/assets/js/circle-progress.min.js"></script>
+    <script src="/assets/js/circle-progress-init.js"></script>
+    <script src="/assets/js/application.js"></script>
+    {% block scripts %} {% endblock scripts %}
+</body>
+
+</html>

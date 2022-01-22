@@ -1,0 +1,157 @@
+{% extends 'layouts/users_app.html' %} {% block title %} Invest {% endblock title %} {% block styles %}
+<style>
+    .text-success {
+        color: #fd961a !important;
+    }
+    
+    .investment-card {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 15px;
+    }
+    
+    .radio-toolbar input[type="radio"] {
+        opacity: 0;
+        position: fixed;
+        width: 0;
+    }
+    
+    .radio-toolbar label {
+        color: #ffffff;
+        display: inline-block;
+        background-color: #1d1d1d;
+        ;
+        padding: 5px 15px;
+        font-size: 16px;
+        border: 2px solid #444;
+        border-radius: 5px;
+    }
+    
+    .radio-toolbar label:hover {
+        background-color: #000;
+    }
+    
+    .radio-toolbar input[type="radio"]:checked+label {
+        background-color: #fd961a;
+        border-color: #fd961a;
+    }
+    
+    h3.card-balance {
+        color: cadetblue;
+    }
+    
+    ul.pricing-content li {
+        margin-bottom: 1em;
+    }
+    
+    ul.pricing-content li i {
+        color: #fd961a;
+        font-size: 25px;
+        margin-right: 18px;
+    }
+    
+    .card__item {
+        /*height: 150px;*/
+        padding: 15px;
+        box-shadow: 0 0 3px rgb(0 0 0 / 20%);
+        background-color: #ccffff;
+        display: flex;
+        border-radius: 25px;
+    }
+    
+    .card__body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-grow: 1;
+        min-width: 50px;
+        overflow: hidden;
+        white-space: nowrap;
+        justify-content: center;
+        font-family: sans-serif;
+        font-size: 13px;
+        color: #444444;
+        text-decoration: none;
+    }
+    
+    .fa_card {
+        background-color: rgb(14, 46, 69);
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        color: white;
+    }
+</style>
+
+{% endblock styles %} {% block content %}
+<div class="container">
+    <!--[Breadcrum]-->
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Invest</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Invest</li>
+        </ol>
+    </div>
+    <!--[Breadcrum]-->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <form action="" method="post">
+
+                <div class="row justify-content-center">
+                    <div class="col-8 text-center mb-3 text-success">
+                        <p>Deposite Balance</p>
+                        <h3>${{user.deposite_balance}}</h3>
+                        <strong class="text-white">Choose A Plan That Suit you</strong>
+                    </div>
+                </div>
+                {% csrf_token %}
+                <div class="row justify-content-center">
+                    {% for pack in packages %}
+                    <div class="col-lg-3 col-10">
+                        <div class="card__item mb-3">
+                            <div class="card__body">
+                                <div class="rounded-circle mb-2 bg-white-light fa_card">
+                                    <i class="fas fa-gift fa-2x fa__item"></i>
+                                </div>
+                                <h3 class="card-balance">{{pack.name}}</h3>
+                                <ul class="pricing-content unstyled">
+                                    <li><i class="fa fa-check-circle"></i>Min Amount : ${{pack.min_amount}} </li>
+                                    <li><i class="fa fa-check-circle"></i>Max Amount : {% if pack.name == 'Executive' %} Unlimited {% else %} ${{pack.max_amount}} {% endif %} </li>
+                                    <li><i class="fa fa-check-circle"></i> {{pack.percent}}% After 6 Days</li>
+                                    <li><i class="fa fa-check-circle"></i>Referral Comission 10%</li>
+                                    <!--<li><i class="fa fa-check-circle"></i>Daily Signals</li>-->
+                                </ul>
+                                <div class="radio-toolbar">
+                                    <input type="radio" name="package" value="{{ pack.id }}" id="package_{{ pack.id }}" required>
+                                    <label for="package_{{ pack.id }}">Select</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group mt-3  ">
+                            <label>Amount</label>
+                            <input type="number" class="form-control" placeholder="Input The Amount You want to Invest" name="amount" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button class="btn btn-primary btn-block"><span class="txt">Submit</span> </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock content %} {% block scripts %} {% endblock scripts %}

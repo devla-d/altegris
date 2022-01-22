@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock title %} - Altegris</title>
+    <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/assets/vendor/datatables/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/assets/vendor/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.theme.default.css">
+    <link rel="stylesheet" href="/assets/css/animate.css">
+    <link rel="stylesheet" href="/assets/css/application.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css"> {% block styles %} {% endblock styles %}
+</head>
+
+<body>
+    <main class="wrapper">
+        <!--[sidebar]-->
+        <nav class="sidebar homepage">
+            <ul class="sidebar-menu">
+                {% if user.is_authenticated %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'dashboard' %}">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Wallet</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>History</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Withdraw</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Deposit</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Notifications</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>settings</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Logout</span></a>
+                </li>
+                {% else %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">
+                        <i class="fas fa-fw fa-home"></i>
+                        <span>Home</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'about' %}">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>About Us</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'pricing' %}">
+                        <i class="fas fa-fw fa-gift"></i>
+                        <span>Pricing</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'services' %}">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Services</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'support' %}">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Support</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'sign_up' %}">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Get Started</span></a>
+                </li>
+
+                {% endif %}
+            </ul>
+        </nav>
+        <!--[sidebar]-->
+        <header id="topbar">
+            <div class=" inner-header">
+                <nav>
+                    <div class="nav-brand">
+                        <img src="/assets/images/HEDGEMINE-removebg-preview.png" alt="Logo">
+                    </div>
+                    <ul class="menu">
+                        <li class="menu-item"><a href="/" class="menu-link">Home</a></li>
+                        <li class="menu-item"><a href="{% url 'about' %}" class="menu-link">About</a></li>
+                        <li class="menu-item"><a href="{% url 'pricing' %}" class="menu-link">Pricing</a></li>
+                        <li class="menu-item"><a href="{% url 'services' %}" class="menu-link">Services</a></li>
+                        <li class="menu-item"><a href="{% url 'support' %}" class="menu-link">Support</a></li>
+                        <li class="menu-item last"><a href="{% url 'sign_up' %}" class="menu-link btn btn-primary"><span class="txt">Get Started</span></a></li>
+                    </ul>
+                    <div class="hamburger" type="button">
+                        <span class="bars"></span>
+                        <span class="bars"></span>
+                        <span class="bars"></span>
+                    </div>
+                </nav>
+            </div>
+
+        </header>
+
+
+
+
+        {% block content %} {% endblock content %}
+
+
+
+
+        <footer class="footer" id="contact">
+            <!-- Footer Top Area Starts -->
+            <div class="top-footer">
+                <div class="container">
+                    <div class="row">
+                        <!-- Footer Widget Starts -->
+                        <div class="col-sm-4 col-md-2">
+                            <h4>Our Company</h4>
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="index">Home</a></li>
+                                    <li><a href="#about">About</a></li>
+                                    <li><a href="#packages">Packages</a></li>
+                                    <li><a href="#contact">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Footer Widget Ends -->
+                        <!-- Footer Widget Starts -->
+                        <div class="col-sm-4 col-md-2">
+                            <h4>Help & Support</h4>
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="/register">Register</a></li>
+                                    <li><a href="/login">Login</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Footer Widget Ends -->
+                        <!-- Footer Widget Starts -->
+                        <div class="col-sm-4 col-md-3">
+                            <h4>Contact Us </h4>
+                            <div class="contacts">
+                                <div>
+                                    <span>Info@altegris.com</span>
+                                </div>
+                                <div>
+                                    <span></span>
+                                </div>
+                                <!--<div>-->
+                                <!--<span>4251 Summerhill Road, Texarkana, 75503-->
+                                <!--Texas, USA.</span>-->
+                                <!--</div>-->
+                                <!--<div>-->
+                                <!--<span>mon-sun 24/7</span>-->
+                                <!--</div>-->
+                            </div>
+                            <!-- Social Media Profiles Starts -->
+                            <div class="social-footer">
+                                <ul>
+                                    <li><a href="https://api.whatsapp.com/send?phone=12029827385&text=Hello" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                            <!-- Social Media Profiles Ends -->
+                        </div>
+                        <!-- Footer Widget Ends -->
+                        <!-- Footer Widget Starts -->
+                        <div class="col-sm-12 col-md-5">
+                            <!-- Facts Starts -->
+                            <div class="facts-footer">
+                                <div>
+                                    <h5>$198.76B</h5>
+                                    <span>Market cap</span>
+                                </div>
+                                <div>
+                                    <h5>243K</h5>
+                                    <span>daily transactions</span>
+                                </div>
+                                <div>
+                                    <h5>369K</h5>
+                                    <span>active accounts</span>
+                                </div>
+                                <div>
+                                    <h5>127</h5>
+                                    <span>supported countries</span>
+                                </div>
+                            </div>
+                            <!-- Facts Ends -->
+
+
+
+                            <hr>
+                            <!-- Supported Payment Cards Logo Starts -->
+                            <div class="payment-logos">
+                                <h4 class="payment-title">supported payment methods</h4>
+                                <img src="/assets/images/eth.png" alt="ethereum">
+                                <img src="/assets/images/bitcoin_cash.png" alt="bitcoin_cash">
+                                <img src="/assets/images/bitcoin_image.jfif" alt="visa">
+
+                            </div>
+                            <!-- Supported Payment Cards Logo Ends -->
+                        </div>
+                        <!-- Footer Widget Ends -->
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Top Area Ends -->
+            <!-- Footer Bottom Area Starts -->
+            <div class="bottom-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- Copyright Text Starts -->
+                            <p class="text-center">Copyright &copy; 2021 Worldcrypto. All Rights Reserved
+                            </p>
+                            <!-- Copyright Text Ends -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Bottom Area Ends -->
+        </footer>
+
+    </main>
+
+
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/assets/vendor/select2/dist/js/select2.min.js"></script>
+    <script src="/assets/js/wow.js"></script>
+    <script src="/assets/js/owl.carousel.js"></script>
+    <script src="/assets/js/application.js"></script>
+    {% block scripts %} {% endblock scripts %}
+</body>
+
+</html>

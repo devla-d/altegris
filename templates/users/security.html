@@ -1,0 +1,56 @@
+{% extends 'layouts/users_app.html' %}{% load crispy_forms_tags %} {% block title %} Security Settings{% endblock title %} {% block styles %} {% endblock styles %} {% block content %}
+
+<div class="container">
+    <!--[Breadcrum]-->
+    <div class="d-flex align-items-center justify-content-between mb-5">
+        <h1 class="h3 mb-0 text-gray-800">Password</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Change Password</li>
+        </ol>
+    </div>
+    <!--[Breadcrum]-->
+
+    <div class="row">
+        <div class="col-xl-4 col-lg-4">
+
+            <p><a href="{% url 'settings' %}" class="btn btn-primary btn-block"><i class="fa fa-user"></i><span class="txt">Account settings</span>   </a></p>
+            <p><a href="{% url 'security' %}" class="btn btn-primary btn-block "><i class="fa fa-cog"></i><span class="txt">Security</span> </a></p>
+
+
+
+        </div>
+        <div class="col-xl-8 col-lg-8">
+
+            <div class="tab-content" id="myTabContent">
+
+                <div class="tab-pane show active   fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <form action=" " method="post" id="profile-form">
+                        {% csrf_token %} {{ p_form|crispy }}
+                        <div class="form-group">
+
+                            <input type="submit" name="submit" id="" class="btn btn-primary btn-block" value="Change Password">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+{% endblock content %} {% block scripts %}
+<script type="text/javascript">
+    $('#id_date_of_birth').datepicker({
+        startView: 2,
+        format: 'yyyy/mm/dd',
+        autoclose: true,
+        todayHighlight: true,
+        todayBtn: 'linked',
+    });
+</script>
+{% endblock scripts %}

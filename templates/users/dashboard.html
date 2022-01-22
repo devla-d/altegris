@@ -1,0 +1,350 @@
+{% extends 'layouts/users_app.html' %} {% block title %} Dashboard {% endblock title %} {% block styles %} {% endblock styles %} {% block content %}
+<div class="container">
+    <!--[Breadcrum]-->
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+    </div>
+    <!--[Breadcrum]-->
+
+    <div class="row pbt-5">
+        <div class="col-lg-12">
+            {% if investments %}
+            <div class="row">
+
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">Amount Earn</span>
+                            <h6 class="currency-amount">${{investments.amount_earn}}</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+
+
+
+
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">Amount Invested</span>
+                            <h6 class="currency-amount">${{investments.amount_invested}}</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="la la-exchange"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+
+
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">Start Date</span>
+                            <h6 class="currency-amount">{{investments.start_date|date:"Y/m/d"}}</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+            <div class="row  justify-content-center  ">
+
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">End date</span>
+                            <h6 id="engtime" data-time="{{ investments.end_date|date:'M d, Y H:m:s' }}" class="currency-amount">20/19/2020</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">Package</span>
+                            <h6 class="currency-amount">{{investments.package.name}}</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+
+
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">Status</span>
+                            <h6 class="currency-amount {% if investments.status == 'active' %}text-danger{% else %}text-success{% endif %}">
+                                {{investments.status}}
+                            </h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+
+
+            </div>
+            <div class="row  justify-content-center  ">
+                <div class="col-12">
+
+                    <div class="counterbox" id="counterbox">
+
+                    </div>
+
+                </div>
+            </div>
+            {% if deadline == True %}
+            <div class="row justify-content-center">
+                <div class="col-10 mb-4">
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#claimmodal" class="btn btn-primary btn-block"><span class="txt">Reap</span> </a>
+                </div>
+            </div>
+            {% endif %} {% if investments.is_complete == True %}
+            <div class="row justify-content-center">
+                <div class="col-10 mb-4">
+                    <a href="{% url 'create-investment' %}" class="btn btn-primary btn-block"><span class="txt">Renew/Upgrade Investment</span> </a>
+                </div>
+            </div>
+            {% endif %} {% else %}
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-xl-8 mt-2">
+                    <div class="card   mt-5 " style="margin-top: 100px !important;">
+                        <div class="text-center">
+                            <h5 class="text-primary">You Don't Have Any Current Investment</h5>
+                            <a href="{% url 'create-investment' %}" class="btn btn-primary"><i class="la la-exchange"></i><span class="txt">Invest</span> </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="claimmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelcashout" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelLogout tex-center">Claim Your Investment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            </div>
+            <div class="modal-body tex-center">
+                <h4>Amount Invested : <span class="text-danger">${{investments.amount_invested}}</span> </h4>
+                <h4>Expected Payout : <span class="text-success">${{expected_earnings}}</span></h4>
+            </div>
+            <div class="modal-footer">
+                <form action="{% url 'claim-investment' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="user" value="{{user.id}}">
+                    <input type="hidden" name="expected_earnings" value="{{expected_earnings}}">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!--<input type="submit" class="btn btn-outline-primary btn-block" value="Claim">-->
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-primary btn-block">Claim</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %} {% block scripts %}
+
+<script>
+    $(document).ready(function() {
+
+
+        const FULL_DASH_ARRAY = 50000;
+        const WARNING_THRESHOLD = 1000;
+        const ALERT_THRESHOLD = 50;
+
+        const COLOR_CODES = {
+            info: {
+                color: "green"
+            },
+            warning: {
+                color: "orange",
+                threshold: WARNING_THRESHOLD
+            },
+            alert: {
+                color: "red",
+                threshold: ALERT_THRESHOLD
+            }
+        };
+
+        var endtime = $('#engtime').data('time')
+        const TIME_LIMIT = 518400;
+        let timePassed = 0;
+        let timeLeft = TIME_LIMIT;
+        let timerInterval = null;
+        let remainingPathColor = COLOR_CODES.info.color;
+
+        document.getElementById("counterbox").innerHTML = `
+    <div class="base-timer">
+      <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g class="base-timer__circle">
+          <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+          <path
+            id="base-timer-path-remaining"
+            stroke-dasharray="283"
+            class="base-timer__path-remaining ${remainingPathColor}"
+            d="
+              M 50, 50
+              m -45, 0
+              a 45,45 0 1,0 90,0
+              a 45,45 0 1,0 -90,0
+            "
+          ></path>
+        </g>
+      </svg>
+      <span id="base-timer-label" class="base-timer__label">${formatTime(
+        endtime
+      )}</span>
+    </div>
+    `;
+
+        startTimer();
+
+        function onTimesUp() {
+            clearInterval(timerInterval);
+
+
+        }
+
+
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                var now = new Date().getTime();
+                const eventDate = Date.parse(endtime);
+                var distance = eventDate - now;
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                timePassed = timePassed += 1;
+                timeLeft = TIME_LIMIT - timePassed;
+
+
+                document.getElementById("base-timer-label").innerHTML = formatTime(
+                    distance
+                );
+                setCircleDasharray();
+                setRemainingPathColor(timeLeft);
+
+                if (distance < 0) {
+                    document.getElementById("base-timer-label").innerHTML = formatTime(
+                        distance
+                    );
+                    onTimesUp();
+
+
+                }
+            }, 1000);
+        }
+
+        function formatTime(distance) {
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance < 0) {
+                seconds = 0;
+                days = 0
+                hours = 0
+                minutes = 0
+                s = 0
+            }
+
+            return `${days}:${hours}:${minutes}:${seconds}`;
+        }
+
+        function setRemainingPathColor(timeLeft) {
+            const {
+                alert,
+                warning,
+                info
+            } = COLOR_CODES;
+            if (timeLeft <= alert.threshold) {
+                document
+                    .getElementById("base-timer-path-remaining")
+                    .classList.remove(warning.color);
+                document
+                    .getElementById("base-timer-path-remaining")
+                    .classList.add(alert.color);
+            } else if (timeLeft <= warning.threshold) {
+                document
+                    .getElementById("base-timer-path-remaining")
+                    .classList.remove(info.color);
+                document
+                    .getElementById("base-timer-path-remaining")
+                    .classList.add(warning.color);
+            }
+        }
+
+        function calculateTimeFraction() {
+            const rawTimeFraction = timeLeft / TIME_LIMIT;
+            return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+        }
+
+        function setCircleDasharray() {
+            const circleDasharray = `${(
+        calculateTimeFraction() * FULL_DASH_ARRAY
+      ).toFixed(0)} 283`;
+            document
+                .getElementById("base-timer-path-remaining")
+                .setAttribute("stroke-dasharray", circleDasharray);
+        }
+
+    });
+</script>
+{% endblock scripts %}

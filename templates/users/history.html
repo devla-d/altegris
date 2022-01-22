@@ -1,0 +1,81 @@
+{% extends 'layouts/users_app.html' %} {% block title %} Transaction history {% endblock title %} {% block styles %} {% endblock styles %} {% block content %}
+
+<div class="container">
+    <!--[Breadcrum]-->
+    <div class="d-flex align-items-center justify-content-between mb-5">
+        <h1 class="h3 mb-0 text-gray-800">History</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">History</li>
+        </ol>
+    </div>
+    <!--[Breadcrum]-->
+
+    {% if transactions %}
+    <div class="row ">
+        <div class="col-xl-12">
+            <div class="table-responsive mb-5 mt-5">
+                <table id="example" class="table align-items-center table-flush" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col text-white">Activity</th>
+                            <th scope="col text-white">Mode</th>
+                            <th scope="col text-white">Date</th>
+                            <th scope="col text-white">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+
+
+                        {% for obj in transactions %}
+                        <tr>
+                            <td scope="row"><span class="text-success">{{ obj.trans_type }}</span></td>
+                            {% if obj.status == 'pending' %}
+                            <td class="text-warning">pending</td>
+                            {% elif obj.status == 'declined' %}
+                            <td class="text-danger">declined</td>
+                            {% else %}
+                            <td class="text-success">approved</td>
+                            {% endif %}
+                            <td class="text-muted">{{ obj.date|date:"Y/m/d" }}</td>
+                            <td class="text-success"> ${{ obj.amount }} </td>
+                        </tr>
+                        {% endfor %}
+
+
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-8 mt-2">
+            <div class="card   mt-5 ">
+                <div class="text-center">
+                    <h5 class="text-primary">No Transactions</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endif %}
+
+
+</div>
+
+
+
+
+{% endblock content %} {% block scripts %}
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+
+{% endblock scripts %}

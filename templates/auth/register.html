@@ -1,0 +1,149 @@
+{% extends "layouts/account_app.html" %}{% load crispy_forms_tags %} {% block title %} Create A New Account {% endblock title %} {% block styles %}
+
+
+<style>
+    #hint_id_password1,
+    #hint_id_password2,
+    #hint_id_username,
+    .float-borderlabel label {
+        display: none;
+    }
+    
+     :focus {
+        outline: none;
+    }
+    
+    .float-borderlabel input {
+        background-color: transparent;
+        border-width: 0 0 1px 0;
+        border-radius: 0;
+        z-index: 1;
+        position: relative;
+        padding-left: 0;
+        padding-right: 0;
+        background-image: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid #ccc;
+        color: #fff;
+        transition: 0.5s;
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+    
+    .float-borderlabel input:focus {
+        outline: none;
+        color: #fff;
+        box-shadow: none;
+        background-color: transparent;
+        width: 100%;
+        border-bottom: 1px solid #4a5783;
+    }
+    
+    .float-borderlabel input~.borderlabel {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #27ad8a;
+    }
+    
+    .float-borderlabel input::placeholder {
+        color: #ccc;
+    }
+</style>
+{% endblock styles %} {% block content %}
+
+
+<main class="wrapper ">
+
+    <header id="authheader">
+        <div class="arrow-back">
+            <i class="fas "></i>
+        </div>
+        <div class="autharea">
+            <a href="{% url 'sign_in' %}" title="Sign In">Sign In</a>
+        </div>
+    </header>
+    <div class="container h-100 text-white auth-content login" style="    padding-bottom: 85px;">
+        <div class="row h-100">
+            <div class="col-12 align-self-center mb-4">
+                <div class="row justify-content-center">
+                    <div class="col-11 col-sm-7 col-md-6 col-lg-5 col-xl-4">
+                        <img src="/assets/images/HEDGEMINE-removebg-preview.png" alt="" style="margin-top: -35px;margin-bottom: 30px">
+                        <h2 class="font-weight-normal mb-5 mt-4">Create new<br>account with us</h2>
+                        <form action="" method="post">
+                            <!--<div class="form-group float-label">
+                                <input type="text" class="form-control text-white" name="fullname" id="fullname" value="" required="">
+                                <label class="form-control-label text-white">Full Name</label>
+                            </div>
+                            <div class="form-group float-label">
+                                <input type="email" class="form-control text-white" name="email" id="email" value="" required="">
+                                <label class="form-control-label text-white">Email</label>
+                            </div>
+                            <div class="form-group float-label">
+                                <input type="text" class="form-control text-white" name="username" id="username" required="">
+                                <label class="form-control-label text-white">Username</label>
+                            </div>
+                            <div class="form-group float-label">
+                                <input type="text" class="form-control text-white" name="phone" id="phone" onkeyup="otpCode()" value="" maxlength="11" required="">
+                                <label class="form-control-label text-white">Phone</label>
+                            </div>
+                            <div class="form-group float-label position-relative">
+                                <input type="password" class="form-control text-white " id="password" name="password" required="">
+                                <label class="form-control-label text-white">Password</label>
+                            </div>
+                            <div class="form-group float-label position-relative">
+                                <input type="password" class="form-control text-white " id="cpassword" name="cpassword" required="">
+                                <label class="form-control-label text-white">Confirm Password</label>
+                            </div>-->
+                            {% csrf_token %}
+                            <div class="form-group float-borderlabel ">
+                                {{ form.fullname|as_crispy_field }}
+                                <span class="borderlabel"></span>
+                            </div>
+                            <div class="form-group float-borderlabel ">
+                                {{ form.email|as_crispy_field }}
+                                <span class="borderlabel"></span>
+                            </div>
+                            <div class="form-group float-borderlabel ">
+                                {{ form.username|as_crispy_field }}
+                                <span class="borderlabel"></span>
+                            </div>
+                            <div class="form-group float-borderlabel ">
+                                {{ form.phone|as_crispy_field }}
+                                <span class="borderlabel"></span>
+                            </div>
+                            <div class="form-group float-borderlabel ">
+                                {{ form.password1|as_crispy_field }}
+                                <span class="borderlabel"></span>
+                            </div>
+                            <div class="form-group float-borderlabel ">
+                                {{ form.password2|as_crispy_field }}
+                                <span class="borderlabel"></span>
+                            </div>
+                            {% if refferd_by %}
+                            <input type="hidden" name="refferd_by" value="{{ refferd_by }}"> {% endif %}
+                            <div class="form-group float-label position-relative">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="checkbox" id="customSwitch1" required="">
+                                    <label class="custom-control-label" for="customSwitch1">Agree to terms and condition</label>
+                                </div>
+                            </div>
+                            <div class="submit-btn">
+                                <button type="submit" name="login" class="btn btn-warning   btn-block" id="submit"><span class="txt">Login</span> </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+
+{% endblock content %} {% block scripts %} {% endblock scripts %}

@@ -1,0 +1,137 @@
+{% extends 'layouts/users_app.html' %} {% block title %} Wallet {% endblock title %} {% block styles %} {% endblock styles %} {% block content %}
+
+<div class="container">
+    <!--[Breadcrum]-->
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Wallet</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Wallet</li>
+        </ol>
+    </div>
+    <!--[Breadcrum]-->
+
+    <div class="row pbt-5">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">Amount Earn</span>
+                            <h6 class="currency-amount">${{amount_earn}}</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="fas  fa-wallet"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">Refferal Balance</span>
+                            <h6 class="currency-amount">${{user.bonus}}</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="fas  fa-share"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">Tot Balance</span>
+                            <h6 class="currency-amount">${{user.balance}}</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+
+
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">Total withdraw</span>
+                            <h6 class="currency-amount">${{user.withdraw_total}}</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">Tot Amount Invested</span>
+                            <h6 class="currency-amount">${{user.total_amount_invested}}</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="la la-exchange"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">No Of Investement</span>
+                            <h6 class="currency-amount">{{user.total_investement_count}}</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+
+
+
+
+                <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                    <div class="d-widget d-flex flex-wrap">
+                        <div class="col-8">
+                            <span class="caption">No of Refferal</span>
+                            <h6 class="currency-amount">{{user.refferal}}</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="icon ml-auto">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- d-widget-two end -->
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock content %} {% block scripts %}{% endblock scripts %}

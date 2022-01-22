@@ -1,0 +1,20 @@
+/* =================================================================== */
+
+
+/* ORANGE #c5ab31
+====================================================================== */
+
+a,
+a:hover,
+a:active,
+a:focus,
+.title-head span,
+.base-color,
+.slider-text .slide-title span {
+    color: #c5ab31;
+}
+
+.title-head-subtitle p:before,
+.title-head-subtitle p:after {
+    background: #c5ab31;
+}

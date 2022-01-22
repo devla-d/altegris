@@ -1,0 +1,99 @@
+{% extends 'layouts/users_app.html' %} {% block title %} Deposit Funds {% endblock title %} {% block styles %} {% endblock styles %} {% block content %}
+
+<div class="container">
+    <!--[Breadcrum]-->
+    <div class="d-flex align-items-center justify-content-between mb-5">
+        <h1 class="h3 mb-0 text-gray-800">Deposit</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Deposit</li>
+        </ol>
+    </div>
+    <!--[Breadcrum]-->
+
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="deposite-card">
+
+                <form action=" " method="post" id="depositForm">
+
+                    {% csrf_token %}
+
+                    <div class="steptab">
+                        <div class="form-group">
+                            <label for="basic-addon2">Wallet address</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" value="1Ax6UvUksdfQGRjJV1yKkv9KFVk3Mr8pyn" id="myInput" disabled>
+
+                                <div class="mytooltip input-group-append">
+                                    <button type="button" style="height: 43px;" class="input-group-text btn btn-primary" onclick="copyFunction('myInput')" onmouseout="outFunc()">
+                                                                      <span class="tooltiptext" id="myTooltip">Copy </span>
+                                                                    <span class="txt">Copy</span>  
+                                                                      </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label>Select Coin</label>
+
+                            <select id="deposite_coin" class=" form-control" name="coin" required>
+                                                                     
+                                                                      <option value="BTC">BTC</option>
+                                                                      <option value="ETH">ETH</option>
+                                                                      <option value="DOGE">DOGE</option>
+                                                                      <option value="XPR">XPR</option>
+                                                                  </select>
+                        </div>
+                        <div class="form-group mt-4">
+                            <label>Amount in Usd</label>
+                            <input type="number" class="form-control" placeholder="Amount" name="amount" required>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <h6 class="text-prim" id="result-amount"></h6>
+                        </div>
+
+                        <h3 class="text-w-50 ">NOTE : <small class="text-muted">Transfer the amount worth of coin to the provided address above, you  will be credited after your transaction have been approved.</small></h3>
+                        <div class="form-group mt-4">
+                            <button class="btn btn-primary btn-block"><span class="txt">Submit</span> </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock content %} {% block scripts %}
+<script type="text/javascript">
+    /*
+                                                                                                    Cpy to clipboard*/
+    function copyFunction(input) {
+        var copyText = document.getElementById(input);
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value);
+
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copied";
+    }
+
+    function outFunc() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy to Address";
+    }
+</script>
+{% endblock scripts %}
